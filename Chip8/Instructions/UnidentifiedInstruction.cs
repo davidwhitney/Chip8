@@ -1,6 +1,6 @@
 using System;
 
-namespace Chip8
+namespace Chip8.Instructions
 {
     [OpCode("Unidentified")]
     public class UnidentifiedInstruction : Instruction
@@ -14,5 +14,9 @@ namespace Chip8
             return (Instruction)Activator.CreateInstance(targetType, Byte1, Byte2);
         }
 
+        public override void Execute(ExecutionEnvironment executionEnvironment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

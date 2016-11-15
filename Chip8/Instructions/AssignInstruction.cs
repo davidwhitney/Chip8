@@ -1,4 +1,4 @@
-﻿namespace Chip8
+﻿namespace Chip8.Instructions
 {
     [OpCode("6")]
     public class AssignInstruction : Instruction
@@ -10,6 +10,11 @@
         public AssignInstruction()
         {
             
+        }
+
+        public override void Execute(ExecutionEnvironment executionEnvironment)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

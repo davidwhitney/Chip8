@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Chip8.Instructions;
 using NUnit.Framework;
 
-namespace Chip8
+namespace Chip8.Tests
 {
     [TestFixture]
     public class DecompilerTests
@@ -44,7 +43,5 @@ namespace Chip8
 
             Assert.That(decompiled.First(), Is.TypeOf(expectedInstance));
         }
-
-
     }
 }

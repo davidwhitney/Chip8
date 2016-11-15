@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Chip8.Instructions;
 
 namespace Chip8
 {

@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Chip8
+namespace Chip8.Instructions
 {
     public abstract class Instruction
     {
@@ -17,6 +17,8 @@ namespace Chip8
         {
         }
 
+        public abstract void Execute(ExecutionEnvironment executionEnvironment);
+       
         public byte[] ToByteArray()
         {
             return new[] {Byte1, Byte2};

@@ -1,6 +1,7 @@
+using Chip8.Instructions;
 using NUnit.Framework;
 
-namespace Chip8
+namespace Chip8.Tests
 {
     [TestFixture]
     public class InstructionTests

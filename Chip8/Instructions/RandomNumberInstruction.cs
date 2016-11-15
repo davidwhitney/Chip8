@@ -1,4 +1,4 @@
-﻿namespace Chip8
+﻿namespace Chip8.Instructions
 {
     [OpCode("C")]
     public class RandomNumberInstruction : Instruction
@@ -10,6 +10,11 @@
         public RandomNumberInstruction()
         {
             
+        }
+
+        public override void Execute(ExecutionEnvironment executionEnvironment)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
