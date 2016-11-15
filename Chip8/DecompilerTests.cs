@@ -28,44 +28,21 @@ namespace Chip8
             Assert.That(result[0].ToString(), Is.EqualTo("6177"));
         }
 
-        [Test]
-        public void Decompile_InstructionIsFourZeros_ReturnsExit()
+        [TestCase("0000", typeof(EndOfFileInstruction))]
+        [TestCase("1000", typeof(JumpInstruction))]
+        [TestCase("3011", typeof(SkipInstruction))]
+        [TestCase("6011", typeof(AssignInstruction))]
+        [TestCase("7011", typeof(AddInstruction))]
+        [TestCase("8010", typeof(RegisterInstruction))]
+        [TestCase("8011", typeof(RegisterInstruction))]
+        [TestCase("C011", typeof(RandomNumberInstruction))]
+        public void Decompile_MapsToInstanceOfInstruction(string instText, Type expectedInstance)
         {
-            var exitInstruction = Instruction.FromText("0000");
-
-            var decompiled = _decompiler.Decompile(exitInstruction.ToByteArray());
-
-            Assert.That(decompiled.First(), Is.TypeOf<EndOfFileInstruction>());
-        }
-
-        [Test]
-        public void Decompile_InstructionIs1NNN_JumpToAddressNNN()
-        {
-            var instruction = Instruction.FromText("1000");
+            var instruction = Instruction.FromText(instText);
 
             var decompiled = _decompiler.Decompile(instruction.ToByteArray());
 
-            Assert.That(decompiled.First(), Is.TypeOf<JumpInstruction>());
-        }
-
-        [Test]
-        public void Decompile_InstructionIs3XKK_SkipInstruction()
-        {
-            var instructions = Instruction.FromText("3011").ToByteArray();
-
-            var decompiled = _decompiler.Decompile(instructions);
-
-            Assert.That(decompiled.First(), Is.TypeOf<SkipInstruction>());
-        }
-
-        [Test]
-        public void Decompile_InstructionIs6XKK_AssignInstruction()
-        {
-            var instructions = Instruction.FromText("6011").ToByteArray();
-
-            var decompiled = _decompiler.Decompile(instructions);
-
-            Assert.That(decompiled.First(), Is.TypeOf<AssignInstruction>());
+            Assert.That(decompiled.First(), Is.TypeOf(expectedInstance));
         }
 
 
